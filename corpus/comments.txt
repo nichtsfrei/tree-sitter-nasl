@@ -1,0 +1,17 @@
+===
+Comments
+===
+
+# This is a single line comment
+// This is also a single line comment because one isn't enough
+/*
+Oh wow we have multiple. Isn't that great?
+*/
+
+---
+
+(source_file
+ (comment)
+ (comment)
+ (comment)
+)

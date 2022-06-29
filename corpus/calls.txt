@@ -1,0 +1,30 @@
+===
+Calls
+===
+
+my_function1(test);
+my_function2(data: test);
+my_function3("love that mixup", data: test);
+
+---
+(source_file
+  (expression_statement
+    (call_expression
+      (identifier)
+      (argument_list
+        (identifier))))
+  (expression_statement
+    (call_expression
+      (identifier)
+      (argument_list
+        (named_argument
+          (identifier)
+          (identifier)))))
+  (expression_statement
+    (call_expression
+      (identifier)
+      (argument_list
+        (string_literal)
+        (named_argument
+          (identifier)
+          (identifier))))))

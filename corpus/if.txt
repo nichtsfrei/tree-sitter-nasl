@@ -1,0 +1,42 @@
+===
+If statements
+===
+
+if (1)
+  exit(1);
+if (description) {
+  exit(0);
+}
+if (1 || 2)
+  exit(1);
+
+---
+
+(source_file                                                                                                                                                                                                    
+  (if_statement                                                                                                                                                                                                 
+    (parenthesized_expression                                                                                                                                                                                   
+      (number_literal))                                                                                                                                                                                         
+    (expression_statement                                                                                                                                                                                       
+      (call_expression                                                                                                                                                                                          
+        (identifier)                                                                                                                                                                                            
+        (argument_list                                                                                                                                                                                          
+          (number_literal)))))                                                                                                                                                                                  
+  (if_statement                                                                                                                                                                                                 
+    (parenthesized_expression                                                                                                                                                                                   
+      (identifier))                                                                                                                                                                                             
+    (compound_statement                                                                                                                                                                                         
+      (expression_statement                                                                                                                                                                                     
+        (call_expression                                                                                                                                                                                        
+          (identifier)                                                                                                                                                                                          
+          (argument_list                                                                                                                                                                                        
+            (number_literal))))))                                                                                                                                                                               
+  (if_statement                                                                                                                                                                                                 
+    (parenthesized_expression                                                                                                                                                                                   
+      (binary_expression                                                                                                                                                                                        
+        (number_literal)                                                                                                                                                                                        
+        (number_literal)))                                                                                                                                                                                      
+    (expression_statement                                                                                                                                                                                       
+      (call_expression                                                                                                                                                                                          
+        (identifier)                                                                                                                                                                                            
+        (argument_list                                                                                                                                                                                          
+          (number_literal))))))
