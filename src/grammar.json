@@ -46,18 +46,6 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "ms_call_modifier"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
           "type": "SYMBOL",
           "name": "_declaration_specifiers"
         },
@@ -2227,7 +2215,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "do_statement"
+          "name": "repeat_statement"
         },
         {
           "type": "SYMBOL",
@@ -2482,12 +2470,12 @@
         }
       ]
     },
-    "do_statement": {
+    "repeat_statement": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "do"
+          "value": "repeat"
         },
         {
           "type": "FIELD",
@@ -2499,7 +2487,7 @@
         },
         {
           "type": "STRING",
-          "value": "while"
+          "value": "until"
         },
         {
           "type": "FIELD",

@@ -1,0 +1,73 @@
+===
+Loops
+===
+
+foreach port( ports ) {
+  display(port);
+}
+
+foreach port( ports ) display(port);
+
+for (i = 0; req[i]; i=i++) display(i);
+
+while(1) display("Let us die young or let us live forever");
+
+repeat {
+ display("drop the bomb!");
+} until (1);
+
+---
+
+    (source_file
+      (foreach_statement
+        (identifier)
+        (argument_list
+          (identifier))
+        (compound_statement
+          (expression_statement
+            (call_expression
+              (identifier)
+              (argument_list
+                (identifier))))))
+      (foreach_statement
+        (identifier)
+        (argument_list
+          (identifier))
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (identifier)))))
+      (for_statement
+        (assignment_expression
+          (identifier)
+          (number_literal))
+        (subscript_expression
+          (identifier)
+          (identifier))
+        (assignment_expression
+          (identifier)
+          (update_expression
+            (identifier)))
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (identifier)))))
+      (while_statement
+        (parenthesized_expression
+          (number_literal))
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (string_literal)))))
+      (repeat_statement
+        (compound_statement
+          (expression_statement
+            (call_expression
+              (identifier)
+              (argument_list
+                (string_literal)))))
+        (parenthesized_expression
+          (number_literal))))

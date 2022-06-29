@@ -68,13 +68,11 @@ module.exports = grammar({
     // Main Grammar
 
     function_definition: $ => seq(
-      optional($.ms_call_modifier),
       $._declaration_specifiers,
       field('declarator', $._declarator),
       field('body', $.compound_statement)
     ),
 
-    // TODO figure out if nasl a declaration
     declaration: $ => seq(
       $._declaration_specifiers,
       commaSep1(field('declarator', choice(
@@ -494,7 +492,7 @@ module.exports = grammar({
       $.expression_statement,
       $.if_statement,
       $.switch_statement,
-      $.do_statement,
+      $.repeat_statement,
       $.while_statement,
       $.foreach_statement,
       $.for_statement,
@@ -554,10 +552,10 @@ module.exports = grammar({
       field('body', $._statement)
     ),
 
-    do_statement: $ => seq(
-      'do',
+    repeat_statement: $ => seq(
+      'repeat',
       field('body', $._statement),
-      'while',
+      'until',
       field('condition', $.parenthesized_expression),
       ';'
     ),

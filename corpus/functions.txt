@@ -1,0 +1,29 @@
+===
+Functions
+===
+
+function test(a);
+
+function test(a)
+{
+  return a;
+}
+---
+    (source_file
+      (declaration
+        (type_identifier)
+        (function_declarator
+          (identifier)
+          (parameter_list
+            (parameter_declaration
+              (type_identifier)))))
+      (function_definition
+        (type_identifier)
+        (function_declarator
+          (identifier)
+          (parameter_list
+            (parameter_declaration
+              (type_identifier))))
+        (compound_statement
+          (return_statement
+            (identifier)))))

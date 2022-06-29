@@ -188,10 +188,6 @@
         "named": true
       },
       {
-        "type": "do_statement",
-        "named": true
-      },
-      {
         "type": "expression_statement",
         "named": true
       },
@@ -213,6 +209,10 @@
       },
       {
         "type": "labeled_statement",
+        "named": true
+      },
+      {
+        "type": "repeat_statement",
         "named": true
       },
       {
@@ -865,10 +865,6 @@
           "named": true
         },
         {
-          "type": "do_statement",
-          "named": true
-        },
-        {
           "type": "expression_statement",
           "named": true
         },
@@ -890,6 +886,10 @@
         },
         {
           "type": "labeled_statement",
+          "named": true
+        },
+        {
+          "type": "repeat_statement",
           "named": true
         },
         {
@@ -1181,32 +1181,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "do_statement",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_statement",
-            "named": true
-          }
-        ]
-      },
-      "condition": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -1594,10 +1568,6 @@
           "named": true
         },
         {
-          "type": "ms_call_modifier",
-          "named": true
-        },
-        {
           "type": "ms_declspec_modifier",
           "named": true
         },
@@ -1853,11 +1823,6 @@
     }
   },
   {
-    "type": "ms_call_modifier",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "ms_declspec_modifier",
     "named": true,
     "fields": {},
@@ -2103,6 +2068,32 @@
           {
             "type": "*",
             "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "repeat_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_statement",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parenthesized_expression",
+            "named": true
           }
         ]
       }
@@ -2812,10 +2803,6 @@
     "named": false
   },
   {
-    "type": "do",
-    "named": false
-  },
-  {
     "type": "else",
     "named": false
   },
@@ -2896,6 +2883,10 @@
     "named": false
   },
   {
+    "type": "repeat",
+    "named": false
+  },
+  {
     "type": "restrict",
     "named": false
   },
@@ -2957,6 +2948,10 @@
   },
   {
     "type": "unsigned",
+    "named": false
+  },
+  {
+    "type": "until",
     "named": false
   },
   {
