@@ -496,6 +496,7 @@ module.exports = grammar({
       $.switch_statement,
       $.do_statement,
       $.while_statement,
+      $.foreach_statement,
       $.for_statement,
       $.return_statement,
       $.break_statement,
@@ -559,6 +560,12 @@ module.exports = grammar({
       'while',
       field('condition', $.parenthesized_expression),
       ';'
+    ),
+    foreach_statement: $ => seq(
+      'foreach',
+      $.identifier,
+      $.argument_list,
+      $._statement
     ),
 
     for_statement: $ => seq(

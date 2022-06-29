@@ -200,6 +200,10 @@
         "named": true
       },
       {
+        "type": "foreach_statement",
+        "named": true
+      },
+      {
         "type": "goto_statement",
         "named": true
       },
@@ -873,6 +877,10 @@
           "named": true
         },
         {
+          "type": "foreach_statement",
+          "named": true
+        },
+        {
           "type": "goto_statement",
           "named": true
         },
@@ -1466,6 +1474,29 @@
       "types": [
         {
           "type": "_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "foreach_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_statement",
+          "named": true
+        },
+        {
+          "type": "argument_list",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -2810,6 +2841,10 @@
   },
   {
     "type": "for",
+    "named": false
+  },
+  {
+    "type": "foreach",
     "named": false
   },
   {
