@@ -1,0 +1,17 @@
+name: "Tests"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+      - run: npm install
+      - run: node_modules/tree-sitter-cli/tree-sitter generate
+      - run: node_modules/tree-sitter-cli/tree-sitter test
