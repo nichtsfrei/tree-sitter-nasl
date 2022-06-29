@@ -2786,10 +2786,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "char_literal"
-        },
-        {
-          "type": "SYMBOL",
           "name": "parenthesized_expression"
         }
       ]
@@ -4612,56 +4608,6 @@
         ]
       }
     },
-    "char_literal": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "L'"
-            },
-            {
-              "type": "STRING",
-              "value": "u'"
-            },
-            {
-              "type": "STRING",
-              "value": "U'"
-            },
-            {
-              "type": "STRING",
-              "value": "u8'"
-            },
-            {
-              "type": "STRING",
-              "value": "'"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "escape_sequence"
-            },
-            {
-              "type": "IMMEDIATE_TOKEN",
-              "content": {
-                "type": "PATTERN",
-                "value": "[^\\n']"
-              }
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "'"
-        }
-      ]
-    },
     "concatenated_string": {
       "type": "SEQ",
       "members": [
@@ -4703,6 +4649,10 @@
             {
               "type": "STRING",
               "value": "\""
+            },
+            {
+              "type": "STRING",
+              "value": "'"
             }
           ]
         },
@@ -4718,7 +4668,7 @@
                   "value": 1,
                   "content": {
                     "type": "PATTERN",
-                    "value": "[^\\\\\"\\n]+"
+                    "value": "[^\\\\[\"']\\n]+"
                   }
                 }
               },
@@ -4730,8 +4680,17 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "\""
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\""
+            },
+            {
+              "type": "STRING",
+              "value": "'"
+            }
+          ]
         }
       ]
     },

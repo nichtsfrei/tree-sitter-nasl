@@ -72,10 +72,6 @@
         "named": true
       },
       {
-        "type": "char_literal",
-        "named": true
-      },
-      {
         "type": "compound_literal_expression",
         "named": true
       },
@@ -931,21 +927,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "char_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "escape_sequence",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2696,15 +2677,7 @@
     "named": false
   },
   {
-    "type": "L'",
-    "named": false
-  },
-  {
     "type": "U\"",
-    "named": false
-  },
-  {
-    "type": "U'",
     "named": false
   },
   {
@@ -2940,15 +2913,7 @@
     "named": false
   },
   {
-    "type": "u'",
-    "named": false
-  },
-  {
     "type": "u8\"",
-    "named": false
-  },
-  {
-    "type": "u8'",
     "named": false
   },
   {

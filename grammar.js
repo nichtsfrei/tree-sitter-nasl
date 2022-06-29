@@ -74,6 +74,7 @@ module.exports = grammar({
       field('body', $.compound_statement)
     ),
 
+    // TODO figure out if nasl a declaration
     declaration: $ => seq(
       $._declaration_specifiers,
       commaSep1(field('declarator', choice(
@@ -615,7 +616,6 @@ module.exports = grammar({
       $.false,
       $.null,
       $.concatenated_string,
-      $.char_literal,
       $.parenthesized_expression
     ),
 
@@ -820,27 +820,18 @@ module.exports = grammar({
       ))
     },
 
-    char_literal: $ => seq(
-      choice('L\'', 'u\'', 'U\'', 'u8\'', '\''),
-      choice(
-        $.escape_sequence,
-        token.immediate(/[^\n']/)
-      ),
-      '\''
-    ),
-
     concatenated_string: $ => seq(
       $.string_literal,
       repeat1($.string_literal)
     ),
 
     string_literal: $ => seq(
-      choice('L"', 'u"', 'U"', 'u8"', '"'),
+      choice('L"', 'u"', 'U"', 'u8"', '"', "'"),
       repeat(choice(
-        token.immediate(prec(1, /[^\\"\n]+/)),
+        token.immediate(prec(1, /[^\\["']\n]+/)),
         $.escape_sequence
       )),
-      '"',
+      choice('"', "'"),
     ),
 
     escape_sequence: $ => token(prec(1, seq(

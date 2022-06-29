@@ -1,0 +1,21 @@
+===
+Assignments
+===
+a = 1;
+b = "eins";
+b = 'eins';
+
+---
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (number_literal)))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (string_literal)))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (string_literal))))
