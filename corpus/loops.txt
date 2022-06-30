@@ -61,13 +61,15 @@ repeat {
           (call_expression
             (identifier)
             (argument_list
-              (string_literal)))))
+              (string_literal
+                (string_fragment))))))
       (repeat_statement
         (compound_statement
           (expression_statement
             (call_expression
               (identifier)
               (argument_list
-                (string_literal)))))
+                (string_literal
+                  (string_fragment))))))
         (parenthesized_expression
           (number_literal))))

@@ -18,12 +18,15 @@ are totally legal";
       (expression_statement
         (assignment_expression
           (identifier)
-          (string_literal)))
+          (string_literal
+            (string_fragment))))
       (expression_statement
         (assignment_expression
           (identifier)
-          (string_literal)))
+          (string_literal
+            (string_fragment))))
       (expression_statement
         (assignment_expression
           (identifier)
-          (string_literal))))
+          (string_literal
+            (string_fragment)))))

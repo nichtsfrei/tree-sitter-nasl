@@ -353,8 +353,8 @@ static const char * const ts_symbol_names[] = {
   [sym_number_literal] = "number_literal",
   [anon_sym_DQUOTE] = "\"",
   [anon_sym_SQUOTE] = "'",
-  [sym__unescaped_double_string_fragment] = "_unescaped_double_string_fragment",
-  [sym__unescaped_single_string_fragment] = "_unescaped_single_string_fragment",
+  [sym__unescaped_double_string_fragment] = "string_fragment",
+  [sym__unescaped_single_string_fragment] = "string_fragment",
   [sym_escape_sequence] = "escape_sequence",
   [sym_true] = "true",
   [sym_false] = "false",
@@ -588,7 +588,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_DQUOTE] = anon_sym_DQUOTE,
   [anon_sym_SQUOTE] = anon_sym_SQUOTE,
   [sym__unescaped_double_string_fragment] = sym__unescaped_double_string_fragment,
-  [sym__unescaped_single_string_fragment] = sym__unescaped_single_string_fragment,
+  [sym__unescaped_single_string_fragment] = sym__unescaped_double_string_fragment,
   [sym_escape_sequence] = sym_escape_sequence,
   [sym_true] = sym_true,
   [sym_false] = sym_false,
@@ -1131,11 +1131,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [sym__unescaped_double_string_fragment] = {
-    .visible = false,
+    .visible = true,
     .named = true,
   },
   [sym__unescaped_single_string_fragment] = {
-    .visible = false,
+    .visible = true,
     .named = true,
   },
   [sym_escape_sequence] = {

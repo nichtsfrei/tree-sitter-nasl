@@ -4719,8 +4719,13 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "_unescaped_double_string_fragment"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_unescaped_double_string_fragment"
+                    },
+                    "named": true,
+                    "value": "string_fragment"
                   },
                   {
                     "type": "SYMBOL",
@@ -4748,8 +4753,13 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "_unescaped_single_string_fragment"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_unescaped_single_string_fragment"
+                    },
+                    "named": true,
+                    "value": "string_fragment"
                   },
                   {
                     "type": "SYMBOL",

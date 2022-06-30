@@ -24,7 +24,8 @@ my_function3("love that mixup", data: test);
     (call_expression
       (identifier)
       (argument_list
-        (string_literal)
+        (string_literal
+          (string_fragment))
         (named_argument
           (identifier)
           (identifier))))))

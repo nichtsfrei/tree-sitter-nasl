@@ -837,7 +837,7 @@ module.exports = grammar({
       seq(
         '"',
         repeat(choice(
-          $._unescaped_double_string_fragment,
+          alias($._unescaped_double_string_fragment, $.string_fragment),
           $.escape_sequence
         )),
         '"'
@@ -845,7 +845,7 @@ module.exports = grammar({
       seq(
         "'",
         repeat(choice(
-          $._unescaped_single_string_fragment,
+          alias($._unescaped_single_string_fragment, $.string_fragment),
           $.escape_sequence
         )),
         "'"
