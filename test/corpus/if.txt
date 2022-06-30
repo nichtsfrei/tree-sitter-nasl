@@ -10,33 +10,46 @@ if (description) {
 if (1 || 2)
   exit(1);
 
----
+if( sysdesc !~ '(Hooray|Waldfee) Codec') exit (0);
 
-(source_file                                                                                                                                                                                                    
-  (if_statement                                                                                                                                                                                                 
-    (parenthesized_expression                                                                                                                                                                                   
-      (number_literal))                                                                                                                                                                                         
-    (expression_statement                                                                                                                                                                                       
-      (call_expression                                                                                                                                                                                          
-        (identifier)                                                                                                                                                                                            
-        (argument_list                                                                                                                                                                                          
-          (number_literal)))))                                                                                                                                                                                  
-  (if_statement                                                                                                                                                                                                 
-    (parenthesized_expression                                                                                                                                                                                   
-      (identifier))                                                                                                                                                                                             
-    (compound_statement                                                                                                                                                                                         
-      (expression_statement                                                                                                                                                                                     
-        (call_expression                                                                                                                                                                                        
-          (identifier)                                                                                                                                                                                          
-          (argument_list                                                                                                                                                                                        
-            (number_literal))))))                                                                                                                                                                               
-  (if_statement                                                                                                                                                                                                 
-    (parenthesized_expression                                                                                                                                                                                   
-      (binary_expression                                                                                                                                                                                        
-        (number_literal)                                                                                                                                                                                        
-        (number_literal)))                                                                                                                                                                                      
-    (expression_statement                                                                                                                                                                                       
-      (call_expression                                                                                                                                                                                          
-        (identifier)                                                                                                                                                                                            
-        (argument_list                                                                                                                                                                                          
-          (number_literal))))))
+
+---
+    (source_file
+      (if_statement
+        (parenthesized_expression
+          (number_literal))
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (number_literal)))))
+      (if_statement
+        (parenthesized_expression
+          (identifier))
+        (compound_statement
+          (expression_statement
+            (call_expression
+              (identifier)
+              (argument_list
+                (number_literal))))))
+      (if_statement
+        (parenthesized_expression
+          (binary_expression
+            (number_literal)
+            (number_literal)))
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (number_literal)))))
+      (if_statement
+        (parenthesized_expression
+          (binary_expression
+            (identifier)
+            (string_literal
+              (string_fragment))))
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (number_literal))))))

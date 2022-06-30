@@ -2,7 +2,6 @@ const PREC = {
   PAREN_DECLARATOR: -10,
   ASSIGNMENT: -1,
   CONDITIONAL: -2,
-  DEFAULT: 0,
   LOGICAL_OR: 1,
   LOGICAL_AND: 2,
   INCLUSIVE_OR: 3,
@@ -23,6 +22,12 @@ const PREC = {
 
 module.exports = grammar({
   name: 'nasl',
+  externals: $ => [
+    $._unescaped_double_string_fragment,
+    $._unescaped_single_string_fragment,
+    $._unescaped_double_string_fragment_no_quoted_end,
+    $._unescaped_single_string_fragment_no_quoted_end,
+  ],
 
   extras: $ => [
     /\s|\\\r?\n/,
@@ -45,7 +50,6 @@ module.exports = grammar({
     [$._type_specifier, $._expression],
     [$._type_specifier, $._expression, $.macro_type_specifier],
     [$._type_specifier, $.macro_type_specifier],
-    [$.sized_type_specifier],
     [$._declaration_modifiers, $.attributed_statement],
     [$._declaration_modifiers, $.attributed_non_case_statement],
   ],
@@ -91,7 +95,6 @@ module.exports = grammar({
     ),
 
     _declaration_modifiers: $ => choice(
-      $.storage_class_specifier,
       $.type_qualifier,
       $.attribute_specifier,
       $.attribute_declaration,
@@ -330,14 +333,6 @@ module.exports = grammar({
       '}'
     ),
 
-    storage_class_specifier: $ => choice(
-      'extern',
-      'static' ,
-      'auto',
-      'register',
-      'inline'
-    ),
-
     type_qualifier: $ => choice(
       'const',
       'volatile',
@@ -346,27 +341,12 @@ module.exports = grammar({
     ),
 
     _type_specifier: $ => choice(
-      $.struct_specifier,
       $.union_specifier,
-      $.enum_specifier,
       $.macro_type_specifier,
-      $.sized_type_specifier,
       $.primitive_type,
       $._type_identifier
     ),
 
-    sized_type_specifier: $ => seq(
-      repeat1(choice(
-        'signed',
-        'unsigned',
-        'long',
-        'short'
-      )),
-      field('type', optional(choice(
-        prec.dynamic(-1, $._type_identifier),
-        $.primitive_type
-      )))
-    ),
 
     primitive_type: $ => token(choice(
       'bool',
@@ -384,36 +364,6 @@ module.exports = grammar({
       ...[8, 16, 32, 64].map(n => `uint${n}_t`),
       ...[8, 16, 32, 64].map(n => `char${n}_t`)
     )),
-
-    enum_specifier: $ => seq(
-      'enum',
-      choice(
-        seq(
-          field('name', $._type_identifier),
-          field('body', optional($.enumerator_list))
-        ),
-        field('body', $.enumerator_list)
-      )
-    ),
-
-    enumerator_list: $ => seq(
-      '{',
-      commaSep($.enumerator),
-      optional(','),
-      '}'
-    ),
-
-    struct_specifier: $ => seq(
-      'struct',
-      optional($.ms_declspec_modifier),
-      choice(
-        seq(
-          field('name', $._type_identifier),
-          field('body', optional($.field_declaration_list))
-        ),
-        field('body', $.field_declaration_list)
-      )
-    ),
 
     union_specifier: $ => seq(
       'union',
@@ -446,13 +396,8 @@ module.exports = grammar({
 
     bitfield_clause: $ => seq(':', $._expression),
 
-    enumerator: $ => seq(
-      field('name', $.identifier),
-      optional(seq('=', field('value', $._expression)))
-    ),
-
     variadic_parameter: $ => seq(
-        '...',
+      '...',
     ),
 
     parameter_list: $ => seq(
@@ -482,7 +427,6 @@ module.exports = grammar({
     ),
 
     _statement: $ => choice(
-      $.case_statement,
       $._non_case_statement
     ),
 
@@ -531,20 +475,6 @@ module.exports = grammar({
       field('condition', $.parenthesized_expression),
       field('body', $.compound_statement)
     ),
-
-    case_statement: $ => prec.right(seq(
-      choice(
-        seq('case', field('value', $._expression)),
-        'default'
-      ),
-      ':',
-      repeat(choice(
-        alias($.attributed_non_case_statement, $.attributed_statement),
-        $._non_case_statement,
-        $.declaration,
-        $.type_definition
-      ))
-    )),
 
     while_statement: $ => seq(
       'while',
@@ -609,7 +539,6 @@ module.exports = grammar({
       $.update_expression,
       $.cast_expression,
       $.pointer_expression,
-      $.sizeof_expression,
       $.subscript_expression,
       $.call_expression,
       $.field_expression,
@@ -689,6 +618,7 @@ module.exports = grammar({
         ['&', PREC.BITWISE_AND],
         ['==', PREC.EQUAL],
         ['!=', PREC.EQUAL],
+        ['!~', PREC.EQUAL],
         ['>', PREC.RELATIONAL],
         ['>=', PREC.RELATIONAL],
         ['<=', PREC.RELATIONAL],
@@ -730,14 +660,6 @@ module.exports = grammar({
       repeat($.type_qualifier),
       field('declarator', optional($._abstract_declarator))
     ),
-
-    sizeof_expression: $ => prec(PREC.SIZEOF, seq(
-      'sizeof',
-      choice(
-        field('value', $._expression),
-        seq('(', field('type', $.type_descriptor), ')')
-      )
-    )),
 
     subscript_expression: $ => prec(PREC.SUBSCRIPT, seq(
       field('argument', $._expression),
@@ -832,52 +754,27 @@ module.exports = grammar({
       repeat1($.string_literal)
     ),
 
+
+    // nasl supports "hjdahk\hkjdhak\" as well as "hj\"...going forward"
+    // I have no clue how to support both
     string_literal: $ => choice(
       seq(
         '"',
-        repeat(choice(
+        prec.right(choice(
           alias($._unescaped_double_string_fragment, $.string_fragment),
-          $.escape_sequence
+          alias($._unescaped_double_string_fragment_no_quoted_end, $.string_fragment),
         )),
         '"'
       ),
       seq(
         "'",
-        repeat(choice(
+        prec.right(choice(
           alias($._unescaped_single_string_fragment, $.string_fragment),
-          $.escape_sequence
+          alias($._unescaped_single_string_fragment_no_quoted_end, $.string_fragment),
         )),
         "'"
       )
     ),
-
-    // Workaround to https://github.com/tree-sitter/tree-sitter/issues/1156
-    // We give names to the token() constructs containing a regexp
-    // so as to obtain a node in the CST.
-    //
-    _unescaped_double_string_fragment: $ =>
-      token.immediate(prec(1, /[^"\\]+/)),
-
-    // same here
-    _unescaped_single_string_fragment: $ =>
-      token.immediate(prec(1, /[^'\\]+/)),
-
-    escape_sequence: $ => token(prec(1, seq(
-      '\\',
-      choice(
-        /[^xuU]/,
-        /\d{2,3}/,
-        /x[0-9a-fA-F]{2,}/,
-        /u[0-9a-fA-F]{4}/,
-        /U[0-9a-fA-F]{8}/
-      )
-    ))),
-
-    system_lib_string: $ => token(seq(
-      '<',
-      repeat(choice(/[^>\n]/, '\\>')),
-      '>'
-    )),
 
     true: $ => token(choice('TRUE', 'true')),
     false: $ => token(choice('FALSE', 'false')),
@@ -924,10 +821,10 @@ module.exports = grammar({
   ]
 });
 
-function commaSep (rule) {
+function commaSep(rule) {
   return optional(commaSep1(rule))
 }
 
-function commaSep1 (rule) {
+function commaSep1(rule) {
   return seq(rule, repeat(seq(',', rule)))
 }

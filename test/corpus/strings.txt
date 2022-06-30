@@ -1,25 +1,10 @@
 ===
-Assignments
+Simple string assignment
 ===
-a = 1;
-b = "eins";
+b = "eins'hall'o";
 b = 'eins';
-c = "yes multiline strings
-''''
-are totally legal";
-
-
 ---
     (source_file
-      (expression_statement
-        (assignment_expression
-          (identifier)
-          (number_literal)))
-      (expression_statement
-        (assignment_expression
-          (identifier)
-          (string_literal
-            (string_fragment))))
       (expression_statement
         (assignment_expression
           (identifier)
@@ -30,3 +15,109 @@ are totally legal";
           (identifier)
           (string_literal
             (string_fragment)))))
+
+===
+Multiline strings
+===
+c = "yes multiline strings
+''''
+are totally legal";
+---
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (string_literal
+            (string_fragment)))))
+===
+DoubleEscape
+===
+a = "hi\"und";
+---
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (string_literal
+            (string_fragment)))))
+
+===
+SingleEscape
+===
+query = '\'|\';';
+
+---
+
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (string_literal
+            (string_fragment)))))
+
+
+===
+\\
+===
+q = '\\' ;
+---
+
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (string_literal
+            (string_fragment)))))
+===
+WTF
+===
+
+key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+
+---
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (string_literal
+            (string_fragment)))))
+
+===
+WTF-II
+===
+    item = str_replace(find:"\", replace:"ha", string:item);
+---
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (call_expression
+            (identifier)
+            (argument_list
+              (named_argument
+                (identifier)
+                (string_literal
+                  (string_fragment)))
+              (named_argument
+                (identifier)
+                (string_literal
+                  (string_fragment)))
+              (named_argument
+                (identifier)
+                (identifier)))))))
+
+===
+WTF-III
+===
+valv = "\Visio\" + Visioentry[v];
+---
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (binary_expression
+            (string_literal
+              (string_fragment))
+            (subscript_expression
+              (identifier)
+              (identifier))))))
