@@ -1,0 +1,20 @@
+===
+Special Operator
+===
+a = 1;
+b = a >< 2;
+
+---
+
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (number_literal)))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (binary_expression
+            (identifier)
+            (number_literal)))))
+

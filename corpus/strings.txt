@@ -4,6 +4,10 @@ Assignments
 a = 1;
 b = "eins";
 b = 'eins';
+c = "yes multiline strings
+''''
+are totally legal";
+
 
 ---
     (source_file
@@ -11,6 +15,10 @@ b = 'eins';
         (assignment_expression
           (identifier)
           (number_literal)))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (string_literal)))
       (expression_statement
         (assignment_expression
           (identifier)

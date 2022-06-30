@@ -695,6 +695,9 @@ module.exports = grammar({
         ['<', PREC.RELATIONAL],
         ['<<', PREC.SHIFT],
         ['>>', PREC.SHIFT],
+        // TODO find proper names for those
+        ['><', PREC.RELATIONAL],
+        ['>!<', PREC.RELATIONAL],
       ];
 
       return choice(...table.map(([operator, precedence]) => {
@@ -830,14 +833,35 @@ module.exports = grammar({
       repeat1($.string_literal)
     ),
 
-    string_literal: $ => seq(
-      choice('L"', 'u"', 'U"', 'u8"', '"', "'"),
-      repeat(choice(
-        token.immediate(prec(1, /[^\\["']\n]+/)),
-        $.escape_sequence
-      )),
-      choice('"', "'"),
+    string_literal: $ => choice(
+      seq(
+        '"',
+        repeat(choice(
+          $._unescaped_double_string_fragment,
+          $.escape_sequence
+        )),
+        '"'
+      ),
+      seq(
+        "'",
+        repeat(choice(
+          $._unescaped_single_string_fragment,
+          $.escape_sequence
+        )),
+        "'"
+      )
     ),
+
+    // Workaround to https://github.com/tree-sitter/tree-sitter/issues/1156
+    // We give names to the token() constructs containing a regexp
+    // so as to obtain a node in the CST.
+    //
+    _unescaped_double_string_fragment: $ =>
+      token.immediate(prec(1, /[^"\\]+/)),
+
+    // same here
+    _unescaped_single_string_fragment: $ =>
+      token.immediate(prec(1, /[^'\\]+/)),
 
     escape_sequence: $ => token(prec(1, seq(
       '\\',

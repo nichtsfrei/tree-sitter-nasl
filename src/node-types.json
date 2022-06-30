@@ -746,6 +746,14 @@
             "named": false
           },
           {
+            "type": ">!<",
+            "named": false
+          },
+          {
+            "type": "><",
+            "named": false
+          },
+          {
             "type": ">=",
             "named": false
           },
@@ -2679,6 +2687,14 @@
     "named": false
   },
   {
+    "type": ">!<",
+    "named": false
+  },
+  {
+    "type": "><",
+    "named": false
+  },
+  {
     "type": ">=",
     "named": false
   },
@@ -2692,14 +2708,6 @@
   },
   {
     "type": "?",
-    "named": false
-  },
-  {
-    "type": "L\"",
-    "named": false
-  },
-  {
-    "type": "U\"",
     "named": false
   },
   {
@@ -2932,14 +2940,6 @@
   },
   {
     "type": "typedef",
-    "named": false
-  },
-  {
-    "type": "u\"",
-    "named": false
-  },
-  {
-    "type": "u8\"",
     "named": false
   },
   {
