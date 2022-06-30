@@ -693,11 +693,10 @@ module.exports = grammar({
         ['>=', PREC.RELATIONAL],
         ['<=', PREC.RELATIONAL],
         ['<', PREC.RELATIONAL],
-        ['<<', PREC.SHIFT],
-        ['>>', PREC.SHIFT],
-        // TODO find proper names for those
         ['><', PREC.RELATIONAL],
         ['>!<', PREC.RELATIONAL],
+        ['<<', PREC.SHIFT],
+        ['>>', PREC.SHIFT],
       ];
 
       return choice(...table.map(([operator, precedence]) => {
