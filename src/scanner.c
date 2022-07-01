@@ -1,4 +1,4 @@
-#include "tree_sitter/parser.h"
+#include <tree_sitter/parser.h>
 #include <stdio.h>
 #include <wctype.h>
 enum TokenType {
