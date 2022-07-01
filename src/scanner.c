@@ -18,10 +18,9 @@ void tree_sitter_nasl_external_scanner_deserialize(void *p, const char *b,
                                                    unsigned n) {}
 
 static void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
-static void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
 
 static bool scan_template_chars(TSLexer *lexer, enum TokenType tt) {
-  bool esc = false, end = false, unquoted_check = true;
+  bool esc = false, unquoted_check = true;
   char s = '\0';
   switch (tt) {
 
