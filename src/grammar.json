@@ -46,8 +46,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_declaration_specifiers"
+          "type": "STRING",
+          "value": "function"
         },
         {
           "type": "FIELD",
@@ -1806,33 +1806,21 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_declaration_specifiers"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "declarator",
-              "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "_declarator"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_abstract_declarator"
-                  }
-                ]
+          "type": "FIELD",
+          "name": "declarator",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_declarator"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_abstract_declarator"
               }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+            ]
+          }
         }
       ]
     },
@@ -4594,6 +4582,10 @@
     [
       "_declaration_modifiers",
       "attributed_non_case_statement"
+    ],
+    [
+      "parenthesized_declarator",
+      "parameter_declaration"
     ]
   ],
   "precedences": [],

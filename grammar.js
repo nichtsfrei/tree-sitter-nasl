@@ -52,6 +52,7 @@ module.exports = grammar({
     [$._type_specifier, $.macro_type_specifier],
     [$._declaration_modifiers, $.attributed_statement],
     [$._declaration_modifiers, $.attributed_non_case_statement],
+    [$.parenthesized_declarator, $.parameter_declaration],
   ],
 
   word: $ => $.identifier,
@@ -72,7 +73,7 @@ module.exports = grammar({
     // Main Grammar
 
     function_definition: $ => seq(
-      $._declaration_specifiers,
+      'function',
       field('declarator', $._declarator),
       field('body', $.compound_statement)
     ),
@@ -407,11 +408,10 @@ module.exports = grammar({
     ),
 
     parameter_declaration: $ => seq(
-      $._declaration_specifiers,
-      optional(field('declarator', choice(
+      field('declarator', choice(
         $._declarator,
         $._abstract_declarator
-      )))
+      ))
     ),
 
     // Statements
