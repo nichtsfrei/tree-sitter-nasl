@@ -1680,26 +1680,6 @@
     }
   },
   {
-    "type": "parameter_declaration",
-    "named": true,
-    "fields": {
-      "declarator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_abstract_declarator",
-            "named": true
-          },
-          {
-            "type": "_declarator",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "parameter_list",
     "named": true,
     "fields": {},
@@ -1708,7 +1688,7 @@
       "required": false,
       "types": [
         {
-          "type": "parameter_declaration",
+          "type": "identifier",
           "named": true
         },
         {

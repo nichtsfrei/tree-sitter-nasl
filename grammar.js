@@ -52,7 +52,6 @@ module.exports = grammar({
     [$._type_specifier, $.macro_type_specifier],
     [$._declaration_modifiers, $.attributed_statement],
     [$._declaration_modifiers, $.attributed_non_case_statement],
-    [$.parenthesized_declarator, $.parameter_declaration],
   ],
 
   word: $ => $.identifier,
@@ -403,16 +402,10 @@ module.exports = grammar({
 
     parameter_list: $ => seq(
       '(',
-      commaSep(choice($.parameter_declaration, $.variadic_parameter)),
+      commaSep(choice($.identifier, $.variadic_parameter)),
       ')'
     ),
 
-    parameter_declaration: $ => seq(
-      field('declarator', choice(
-        $._declarator,
-        $._abstract_declarator
-      ))
-    ),
 
     // Statements
 

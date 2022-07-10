@@ -1756,7 +1756,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "parameter_declaration"
+                      "name": "identifier"
                     },
                     {
                       "type": "SYMBOL",
@@ -1778,7 +1778,7 @@
                         "members": [
                           {
                             "type": "SYMBOL",
-                            "name": "parameter_declaration"
+                            "name": "identifier"
                           },
                           {
                             "type": "SYMBOL",
@@ -1799,28 +1799,6 @@
         {
           "type": "STRING",
           "value": ")"
-        }
-      ]
-    },
-    "parameter_declaration": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "declarator",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_declarator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_abstract_declarator"
-              }
-            ]
-          }
         }
       ]
     },
@@ -4582,10 +4560,6 @@
     [
       "_declaration_modifiers",
       "attributed_non_case_statement"
-    ],
-    [
-      "parenthesized_declarator",
-      "parameter_declaration"
     ]
   ],
   "precedences": [],
