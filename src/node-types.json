@@ -896,10 +896,6 @@
         {
           "type": "linkage_specification",
           "named": true
-        },
-        {
-          "type": "type_definition",
-          "named": true
         }
       ]
     }
@@ -1038,10 +1034,6 @@
         },
         {
           "type": "linkage_specification",
-          "named": true
-        },
-        {
-          "type": "type_definition",
           "named": true
         }
       ]
@@ -1855,10 +1847,6 @@
         {
           "type": "linkage_specification",
           "named": true
-        },
-        {
-          "type": "type_definition",
-          "named": true
         }
       ]
     }
@@ -1913,32 +1901,6 @@
         "types": [
           {
             "type": "_expression",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "type_definition",
-    "named": true,
-    "fields": {
-      "declarator": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "_type_declarator",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_type_specifier",
             "named": true
           }
         ]
@@ -2441,10 +2403,6 @@
   {
     "type": "type_identifier",
     "named": true
-  },
-  {
-    "type": "typedef",
-    "named": false
   },
   {
     "type": "union",
