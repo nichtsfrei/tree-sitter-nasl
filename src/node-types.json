@@ -76,10 +76,6 @@
         "named": true
       },
       {
-        "type": "conditional_expression",
-        "named": true
-      },
-      {
         "type": "false",
         "named": true
       },
@@ -825,42 +821,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "conditional_expression",
-    "named": true,
-    "fields": {
-      "alternative": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_expression",
-            "named": true
-          }
-        ]
-      },
-      "condition": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_expression",
-            "named": true
-          }
-        ]
-      },
-      "consequence": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_expression",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -1955,10 +1915,6 @@
   },
   {
     "type": ">>=",
-    "named": false
-  },
-  {
-    "type": "?",
     "named": false
   },
   {

@@ -426,7 +426,6 @@ module.exports = grammar({
     // Expressions
 
     _expression: $ => choice(
-      $.conditional_expression,
       $.assignment_expression,
       $.binary_expression,
       $.unary_expression,
@@ -452,13 +451,6 @@ module.exports = grammar({
       field('right', choice($._expression, $.comma_expression))
     ),
 
-    conditional_expression: $ => prec.right(PREC.CONDITIONAL, seq(
-      field('condition', $._expression),
-      '?',
-      field('consequence', $._expression),
-      ':',
-      field('alternative', $._expression)
-    )),
 
     _assignment_left_expression: $ => choice(
       $.identifier,
