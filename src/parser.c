@@ -46,8 +46,8 @@ enum {
   anon_sym_LBRACK = 27,
   anon_sym_RBRACK = 28,
   anon_sym_EQ = 29,
-  anon_sym_COLON = 30,
-  anon_sym_DOT_DOT_DOT = 31,
+  anon_sym_DOT_DOT_DOT = 30,
+  anon_sym_COLON = 31,
   anon_sym_if = 32,
   anon_sym_else = 33,
   anon_sym_while = 34,
@@ -218,8 +218,8 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_LBRACK] = "[",
   [anon_sym_RBRACK] = "]",
   [anon_sym_EQ] = "=",
-  [anon_sym_COLON] = ":",
   [anon_sym_DOT_DOT_DOT] = "...",
+  [anon_sym_COLON] = ":",
   [anon_sym_if] = "if",
   [anon_sym_else] = "else",
   [anon_sym_while] = "while",
@@ -390,8 +390,8 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_LBRACK] = anon_sym_LBRACK,
   [anon_sym_RBRACK] = anon_sym_RBRACK,
   [anon_sym_EQ] = anon_sym_EQ,
-  [anon_sym_COLON] = anon_sym_COLON,
   [anon_sym_DOT_DOT_DOT] = anon_sym_DOT_DOT_DOT,
+  [anon_sym_COLON] = anon_sym_COLON,
   [anon_sym_if] = anon_sym_if,
   [anon_sym_else] = anon_sym_else,
   [anon_sym_while] = anon_sym_while,
@@ -652,11 +652,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [anon_sym_COLON] = {
+  [anon_sym_DOT_DOT_DOT] = {
     .visible = true,
     .named = false,
   },
-  [anon_sym_DOT_DOT_DOT] = {
+  [anon_sym_COLON] = {
     .visible = true,
     .named = false,
   },
@@ -1516,7 +1516,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '.') ADVANCE(95);
       if (lookahead == '/') ADVANCE(75);
       if (lookahead == '0') ADVANCE(102);
-      if (lookahead == ':') ADVANCE(51);
+      if (lookahead == ':') ADVANCE(52);
       if (lookahead == ';') ADVANCE(35);
       if (lookahead == '<') ADVANCE(87);
       if (lookahead == '=') ADVANCE(49);
@@ -1574,7 +1574,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '-') ADVANCE(71);
       if (lookahead == '.') ADVANCE(94);
       if (lookahead == '/') ADVANCE(75);
-      if (lookahead == ':') ADVANCE(50);
+      if (lookahead == ':') ADVANCE(51);
       if (lookahead == ';') ADVANCE(35);
       if (lookahead == '<') ADVANCE(87);
       if (lookahead == '=') ADVANCE(49);
@@ -1606,7 +1606,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '-') ADVANCE(71);
       if (lookahead == '.') ADVANCE(94);
       if (lookahead == '/') ADVANCE(75);
-      if (lookahead == ':') ADVANCE(50);
+      if (lookahead == ':') ADVANCE(51);
       if (lookahead == ';') ADVANCE(35);
       if (lookahead == '<') ADVANCE(87);
       if (lookahead == '=') ADVANCE(49);
@@ -1672,7 +1672,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '.') ADVANCE(16);
       END_STATE();
     case 16:
-      if (lookahead == '.') ADVANCE(52);
+      if (lookahead == '.') ADVANCE(50);
       END_STATE();
     case 17:
       if (lookahead == ':') ADVANCE(38);
@@ -1824,14 +1824,14 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '=') ADVANCE(81);
       END_STATE();
     case 50:
-      ACCEPT_TOKEN(anon_sym_COLON);
+      ACCEPT_TOKEN(anon_sym_DOT_DOT_DOT);
       END_STATE();
     case 51:
       ACCEPT_TOKEN(anon_sym_COLON);
-      if (lookahead == ':') ADVANCE(38);
       END_STATE();
     case 52:
-      ACCEPT_TOKEN(anon_sym_DOT_DOT_DOT);
+      ACCEPT_TOKEN(anon_sym_COLON);
+      if (lookahead == ':') ADVANCE(38);
       END_STATE();
     case 53:
       ACCEPT_TOKEN(anon_sym_QMARK);
@@ -3469,8 +3469,8 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_LBRACK] = ACTIONS(1),
     [anon_sym_RBRACK] = ACTIONS(1),
     [anon_sym_EQ] = ACTIONS(1),
-    [anon_sym_COLON] = ACTIONS(1),
     [anon_sym_DOT_DOT_DOT] = ACTIONS(1),
+    [anon_sym_COLON] = ACTIONS(1),
     [anon_sym_if] = ACTIONS(1),
     [anon_sym_else] = ACTIONS(1),
     [anon_sym_while] = ACTIONS(1),

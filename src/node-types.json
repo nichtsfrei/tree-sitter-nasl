@@ -707,21 +707,6 @@
     }
   },
   {
-    "type": "bitfield_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "break_statement",
     "named": true,
     "fields": {}
@@ -993,10 +978,6 @@
         },
         {
           "type": "attribute_specifier",
-          "named": true
-        },
-        {
-          "type": "bitfield_clause",
           "named": true
         },
         {
