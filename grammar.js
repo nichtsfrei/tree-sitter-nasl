@@ -355,7 +355,6 @@ module.exports = grammar({
       $.return_statement,
       $.break_statement,
       $.continue_statement,
-      $.goto_statement
     ),
 
     labeled_statement: $ => seq(
@@ -430,11 +429,6 @@ module.exports = grammar({
       'continue', ';'
     ),
 
-    goto_statement: $ => seq(
-      'goto',
-      field('label', $._statement_identifier),
-      ';'
-    ),
 
     // Expressions
 

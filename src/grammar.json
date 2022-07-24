@@ -1458,10 +1458,6 @@
         {
           "type": "SYMBOL",
           "name": "continue_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "goto_statement"
         }
       ]
     },
@@ -1831,27 +1827,6 @@
         {
           "type": "STRING",
           "value": "continue"
-        },
-        {
-          "type": "STRING",
-          "value": ";"
-        }
-      ]
-    },
-    "goto_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "goto"
-        },
-        {
-          "type": "FIELD",
-          "name": "label",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_statement_identifier"
-          }
         },
         {
           "type": "STRING",

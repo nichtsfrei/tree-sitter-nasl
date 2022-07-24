@@ -188,10 +188,6 @@
         "named": true
       },
       {
-        "type": "goto_statement",
-        "named": true
-      },
-      {
         "type": "if_statement",
         "named": true
       },
@@ -1207,22 +1203,6 @@
     }
   },
   {
-    "type": "goto_statement",
-    "named": true,
-    "fields": {
-      "label": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "statement_identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "if_statement",
     "named": true,
     "fields": {
@@ -2113,10 +2093,6 @@
   },
   {
     "type": "function",
-    "named": false
-  },
-  {
-    "type": "goto",
     "named": false
   },
   {
