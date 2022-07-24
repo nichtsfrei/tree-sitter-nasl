@@ -256,10 +256,6 @@
         "named": true
       },
       {
-        "type": "primitive_type",
-        "named": true
-      },
-      {
         "type": "type_identifier",
         "named": true
       }
@@ -2319,10 +2315,6 @@
   },
   {
     "type": "number_literal",
-    "named": true
-  },
-  {
-    "type": "primitive_type",
     "named": true
   },
   {
