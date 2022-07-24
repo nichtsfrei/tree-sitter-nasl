@@ -61,7 +61,6 @@ module.exports = grammar({
 
     _top_level_item: $ => choice(
       $.function_definition,
-      $.linkage_specification,
       $.declaration,
       $._statement,
       $.attributed_statement,
@@ -95,16 +94,6 @@ module.exports = grammar({
       repeat($._declaration_modifiers),
       field('type', $._type_specifier),
       repeat($._declaration_modifiers),
-    ),
-
-    linkage_specification: $ => seq(
-      'extern',
-      field('value', $.string_literal),
-      field('body', choice(
-        $.function_definition,
-        $.declaration,
-        $.declaration_list
-      ))
     ),
 
     attribute_specifier: $ => seq(
