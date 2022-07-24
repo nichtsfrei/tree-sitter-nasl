@@ -428,7 +428,6 @@ module.exports = grammar({
       $.compound_statement,
       $.expression_statement,
       $.if_statement,
-      $.switch_statement,
       $.repeat_statement,
       $.while_statement,
       $.foreach_statement,
@@ -463,11 +462,6 @@ module.exports = grammar({
       ))
     )),
 
-    switch_statement: $ => seq(
-      'switch',
-      field('condition', $.parenthesized_expression),
-      field('body', $.compound_statement)
-    ),
 
     while_statement: $ => seq(
       'while',

@@ -6,12 +6,13 @@
 "for" @keyword
 "if" @keyword
 "return" @keyword
-"switch" @keyword
 "typedef" @keyword
 "union" @keyword
 "volatile" @keyword
 "while" @keyword
 "foreach" @keyword
+"repeat" @keyword
+"until" @keyword
 
 "--" @operator
 "-" @operator

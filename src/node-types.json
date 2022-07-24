@@ -212,10 +212,6 @@
         "named": true
       },
       {
-        "type": "switch_statement",
-        "named": true
-      },
-      {
         "type": "while_statement",
         "named": true
       }
@@ -1966,32 +1962,6 @@
     }
   },
   {
-    "type": "switch_statement",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "compound_statement",
-            "named": true
-          }
-        ]
-      },
-      "condition": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "type_definition",
     "named": true,
     "fields": {
@@ -2542,10 +2512,6 @@
   {
     "type": "string_fragment",
     "named": true
-  },
-  {
-    "type": "switch",
-    "named": false
   },
   {
     "type": "true",
