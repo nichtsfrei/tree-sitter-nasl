@@ -484,9 +484,9 @@ module.exports = grammar({
     ),
     foreach_statement: $ => seq(
       'foreach',
-      $.identifier,
-      $.argument_list,
-      $._statement
+      field('element', $.identifier),
+      field('selection', $.argument_list),
+      field('body', $._statement),
     ),
 
     for_statement: $ => seq(
@@ -499,7 +499,7 @@ module.exports = grammar({
       field('condition', optional($._expression)), ';',
       field('update', optional(choice($._expression, $.comma_expression))),
       ')',
-      $._statement
+      field('body', $._statement),
     ),
 
     return_statement: $ => seq(
