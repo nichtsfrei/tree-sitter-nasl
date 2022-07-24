@@ -591,25 +591,6 @@
     }
   },
   {
-    "type": "attributed_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "_statement",
-          "named": true
-        },
-        {
-          "type": "attribute_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "binary_expression",
     "named": true,
     "fields": {
@@ -844,19 +825,11 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "declaration",
           "named": true
         },
         {
           "type": "function_definition",
-          "named": true
-        },
-        {
-          "type": "linkage_specification",
           "named": true
         }
       ]
@@ -961,41 +934,6 @@
         },
         {
           "type": "ms_declspec_modifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "declaration_list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_statement",
-          "named": true
-        },
-        {
-          "type": "_type_specifier",
-          "named": true
-        },
-        {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
-          "type": "declaration",
-          "named": true
-        },
-        {
-          "type": "function_definition",
-          "named": true
-        },
-        {
-          "type": "linkage_specification",
           "named": true
         }
       ]
@@ -1453,40 +1391,6 @@
     }
   },
   {
-    "type": "linkage_specification",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "declaration",
-            "named": true
-          },
-          {
-            "type": "declaration_list",
-            "named": true
-          },
-          {
-            "type": "function_definition",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "string_literal",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "macro_type_specifier",
     "named": true,
     "fields": {
@@ -1780,19 +1684,11 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "declaration",
           "named": true
         },
         {
           "type": "function_definition",
-          "named": true
-        },
-        {
-          "type": "linkage_specification",
           "named": true
         }
       ]
@@ -2229,10 +2125,6 @@
   },
   {
     "type": "else",
-    "named": false
-  },
-  {
-    "type": "extern",
     "named": false
   },
   {

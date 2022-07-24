@@ -50,7 +50,6 @@ module.exports = grammar({
     [$._type_specifier, $._expression],
     [$._type_specifier, $._expression, $.macro_type_specifier],
     [$._type_specifier, $.macro_type_specifier],
-    [$._declaration_modifiers, $.attributed_statement],
     [$._declaration_modifiers, $.attributed_non_case_statement],
   ],
 
@@ -63,7 +62,6 @@ module.exports = grammar({
       $.function_definition,
       $.declaration,
       $._statement,
-      $.attributed_statement,
       $._empty_declaration,
     ),
 
@@ -341,11 +339,6 @@ module.exports = grammar({
 
 
     // Statements
-
-    attributed_statement: $ => seq(
-      repeat1($.attribute_declaration),
-      $._statement
-    ),
 
     attributed_non_case_statement: $ => seq(
       repeat1($.attribute_declaration),

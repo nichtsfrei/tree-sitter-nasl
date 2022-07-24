@@ -18,19 +18,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "linkage_specification"
-        },
-        {
-          "type": "SYMBOL",
           "name": "declaration"
         },
         {
           "type": "SYMBOL",
           "name": "_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "attributed_statement"
         },
         {
           "type": "SYMBOL",
@@ -167,44 +159,6 @@
           "content": {
             "type": "SYMBOL",
             "name": "_declaration_modifiers"
-          }
-        }
-      ]
-    },
-    "linkage_specification": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "extern"
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_literal"
-          }
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "function_definition"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "declaration"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "declaration_list"
-              }
-            ]
           }
         }
       ]
@@ -1482,22 +1436,6 @@
         {
           "type": "STRING",
           "value": ")"
-        }
-      ]
-    },
-    "attributed_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "attribute_declaration"
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_statement"
         }
       ]
     },
@@ -4171,10 +4109,6 @@
     [
       "_type_specifier",
       "macro_type_specifier"
-    ],
-    [
-      "_declaration_modifiers",
-      "attributed_statement"
     ],
     [
       "_declaration_modifiers",
