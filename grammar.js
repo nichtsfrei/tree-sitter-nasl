@@ -468,7 +468,6 @@ module.exports = grammar({
       $.binary_expression,
       $.unary_expression,
       $.update_expression,
-      $.cast_expression,
       $.pointer_expression,
       $.subscript_expression,
       $.call_expression,
@@ -577,13 +576,6 @@ module.exports = grammar({
         seq(argument, operator),
       ));
     },
-
-    cast_expression: $ => prec(PREC.CAST, seq(
-      '(',
-      field('type', $.type_descriptor),
-      ')',
-      field('value', $._expression)
-    )),
 
     type_descriptor: $ => seq(
       field('type', $._type_specifier),
