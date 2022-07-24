@@ -88,14 +88,12 @@ module.exports = grammar({
 
     type_definition: $ => seq(
       'typedef',
-      repeat($.type_qualifier),
       field('type', $._type_specifier),
       commaSep1(field('declarator', $._type_declarator)),
       ';'
     ),
 
     _declaration_modifiers: $ => choice(
-      $.type_qualifier,
       $.attribute_specifier,
       $.attribute_declaration,
       $.ms_declspec_modifier
@@ -251,25 +249,21 @@ module.exports = grammar({
       optional($.ms_based_modifier),
       '*',
       repeat($.ms_pointer_modifier),
-      repeat($.type_qualifier),
       field('declarator', $._declarator)
     ))),
     pointer_field_declarator: $ => prec.dynamic(1, prec.right(seq(
       optional($.ms_based_modifier),
       '*',
       repeat($.ms_pointer_modifier),
-      repeat($.type_qualifier),
       field('declarator', $._field_declarator)
     ))),
     pointer_type_declarator: $ => prec.dynamic(1, prec.right(seq(
       optional($.ms_based_modifier),
       '*',
       repeat($.ms_pointer_modifier),
-      repeat($.type_qualifier),
       field('declarator', $._type_declarator)
     ))),
     abstract_pointer_declarator: $ => prec.dynamic(1, prec.right(seq('*',
-      repeat($.type_qualifier),
       field('declarator', optional($._abstract_declarator))
     ))),
 
@@ -295,28 +289,24 @@ module.exports = grammar({
     array_declarator: $ => prec(1, seq(
       field('declarator', $._declarator),
       '[',
-      repeat($.type_qualifier),
       field('size', optional(choice($._expression, '*'))),
       ']'
     )),
     array_field_declarator: $ => prec(1, seq(
       field('declarator', $._field_declarator),
       '[',
-      repeat($.type_qualifier),
       field('size', optional(choice($._expression, '*'))),
       ']'
     )),
     array_type_declarator: $ => prec(1, seq(
       field('declarator', $._type_declarator),
       '[',
-      repeat($.type_qualifier),
       field('size', optional(choice($._expression, '*'))),
       ']'
     )),
     abstract_array_declarator: $ => prec(1, seq(
       field('declarator', optional($._abstract_declarator)),
       '[',
-      repeat($.type_qualifier),
       field('size', optional(choice($._expression, '*'))),
       ']'
     )),
@@ -331,13 +321,6 @@ module.exports = grammar({
       '{',
       repeat($._top_level_item),
       '}'
-    ),
-
-    type_qualifier: $ => choice(
-      'const',
-      'volatile',
-      'restrict',
-      '_Atomic'
     ),
 
     _type_specifier: $ => choice(
@@ -642,9 +625,7 @@ module.exports = grammar({
     )),
 
     type_descriptor: $ => seq(
-      repeat($.type_qualifier),
       field('type', $._type_specifier),
-      repeat($.type_qualifier),
       field('declarator', optional($._abstract_declarator))
     ),
 

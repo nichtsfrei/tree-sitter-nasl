@@ -297,16 +297,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "type_qualifier",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -364,16 +354,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "type_qualifier",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -431,16 +411,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "type_qualifier",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1034,10 +1004,6 @@
         {
           "type": "ms_declspec_modifier",
           "named": true
-        },
-        {
-          "type": "type_qualifier",
-          "named": true
         }
       ]
     }
@@ -1143,10 +1109,6 @@
         },
         {
           "type": "ms_declspec_modifier",
-          "named": true
-        },
-        {
-          "type": "type_qualifier",
           "named": true
         }
       ]
@@ -1783,10 +1745,6 @@
         {
           "type": "ms_pointer_modifier",
           "named": true
-        },
-        {
-          "type": "type_qualifier",
-          "named": true
         }
       ]
     }
@@ -1985,16 +1943,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "type_qualifier",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2021,22 +1969,7 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "type_qualifier",
-          "named": true
-        }
-      ]
     }
-  },
-  {
-    "type": "type_qualifier",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "unary_expression",
@@ -2366,10 +2299,6 @@
     "named": false
   },
   {
-    "type": "_Atomic",
-    "named": false
-  },
-  {
     "type": "__attribute__",
     "named": false
   },
@@ -2420,10 +2349,6 @@
   {
     "type": "comment",
     "named": true
-  },
-  {
-    "type": "const",
-    "named": false
   },
   {
     "type": "continue",
@@ -2498,10 +2423,6 @@
     "named": false
   },
   {
-    "type": "restrict",
-    "named": false
-  },
-  {
     "type": "return",
     "named": false
   },
@@ -2531,10 +2452,6 @@
   },
   {
     "type": "until",
-    "named": false
-  },
-  {
-    "type": "volatile",
     "named": false
   },
   {
