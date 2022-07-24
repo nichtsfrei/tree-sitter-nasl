@@ -316,7 +316,6 @@ module.exports = grammar({
     ),
 
     _type_specifier: $ => choice(
-      $.union_specifier,
       $.macro_type_specifier,
       $.primitive_type,
       $._type_identifier
@@ -339,18 +338,6 @@ module.exports = grammar({
       ...[8, 16, 32, 64].map(n => `uint${n}_t`),
       ...[8, 16, 32, 64].map(n => `char${n}_t`)
     )),
-
-    union_specifier: $ => seq(
-      'union',
-      optional($.ms_declspec_modifier),
-      choice(
-        seq(
-          field('name', $._type_identifier),
-          field('body', optional($.field_declaration_list))
-        ),
-        field('body', $.field_declaration_list)
-      )
-    ),
 
     field_declaration_list: $ => seq(
       '{',

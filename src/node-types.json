@@ -262,10 +262,6 @@
       {
         "type": "type_identifier",
         "named": true
-      },
-      {
-        "type": "union_specifier",
-        "named": true
       }
     ]
   },
@@ -1101,21 +1097,6 @@
         },
         {
           "type": "ms_declspec_modifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "field_declaration_list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "field_declaration",
           "named": true
         }
       ]
@@ -1972,42 +1953,6 @@
     }
   },
   {
-    "type": "union_specifier",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "field_declaration_list",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "type_identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "ms_declspec_modifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "update_expression",
     "named": true,
     "fields": {
@@ -2403,10 +2348,6 @@
   {
     "type": "type_identifier",
     "named": true
-  },
-  {
-    "type": "union",
-    "named": false
   },
   {
     "type": "until",

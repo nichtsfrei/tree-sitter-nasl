@@ -1296,10 +1296,6 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "union_specifier"
-        },
-        {
-          "type": "SYMBOL",
           "name": "macro_type_specifier"
         },
         {
@@ -1411,69 +1407,6 @@
           }
         ]
       }
-    },
-    "union_specifier": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "union"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "ms_declspec_modifier"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "FIELD",
-                  "name": "name",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_type_identifier"
-                  }
-                },
-                {
-                  "type": "FIELD",
-                  "name": "body",
-                  "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "field_declaration_list"
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
-                  }
-                }
-              ]
-            },
-            {
-              "type": "FIELD",
-              "name": "body",
-              "content": {
-                "type": "SYMBOL",
-                "name": "field_declaration_list"
-              }
-            }
-          ]
-        }
-      ]
     },
     "field_declaration_list": {
       "type": "SEQ",
