@@ -1417,10 +1417,6 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "labeled_statement"
-        },
-        {
-          "type": "SYMBOL",
           "name": "compound_statement"
         },
         {
@@ -1458,27 +1454,6 @@
         {
           "type": "SYMBOL",
           "name": "continue_statement"
-        }
-      ]
-    },
-    "labeled_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "label",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_statement_identifier"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_statement"
         }
       ]
     },

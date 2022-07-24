@@ -192,10 +192,6 @@
         "named": true
       },
       {
-        "type": "labeled_statement",
-        "named": true
-      },
-      {
         "type": "repeat_statement",
         "named": true
       },
@@ -1323,32 +1319,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "labeled_statement",
-    "named": true,
-    "fields": {
-      "label": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "statement_identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "_statement",
-          "named": true
-        }
-      ]
     }
   },
   {

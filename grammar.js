@@ -344,7 +344,6 @@ module.exports = grammar({
     ),
 
     _non_case_statement: $ => choice(
-      $.labeled_statement,
       $.compound_statement,
       $.expression_statement,
       $.if_statement,
@@ -355,12 +354,6 @@ module.exports = grammar({
       $.return_statement,
       $.break_statement,
       $.continue_statement,
-    ),
-
-    labeled_statement: $ => seq(
-      field('label', $._statement_identifier),
-      ':',
-      $._statement
     ),
 
     expression_statement: $ => seq(
