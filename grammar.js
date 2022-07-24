@@ -325,13 +325,9 @@ module.exports = grammar({
     ),
 
 
-    variadic_parameter: $ => seq(
-      '...',
-    ),
-
     parameter_list: $ => seq(
       '(',
-      commaSep(choice($.identifier, $.variadic_parameter)),
+      commaSep($.identifier),
       ')'
     ),
 
