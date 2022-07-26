@@ -1,14 +1,9 @@
 "break" @keyword
-"const" @keyword
 "continue" @keyword
 "else" @keyword
-"extern" @keyword
 "for" @keyword
 "if" @keyword
 "return" @keyword
-"typedef" @keyword
-"union" @keyword
-"volatile" @keyword
 "while" @keyword
 "foreach" @keyword
 "repeat" @keyword
@@ -50,9 +45,7 @@
   declarator: (identifier) @function)
 
 (field_identifier) @property
-(statement_identifier) @label
 (type_identifier) @type
-(primitive_type) @type
 
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z\\d_]*$"))

@@ -64,6 +64,10 @@
         "named": true
       },
       {
+        "type": "bracket_expression",
+        "named": true
+      },
+      {
         "type": "call_expression",
         "named": true
       },
@@ -85,6 +89,10 @@
       },
       {
         "type": "identifier",
+        "named": true
+      },
+      {
+        "type": "ipv4",
         "named": true
       },
       {
@@ -452,6 +460,10 @@
             "named": false
           },
           {
+            "type": "<<<=",
+            "named": false
+          },
+          {
             "type": "<<=",
             "named": false
           },
@@ -461,6 +473,10 @@
           },
           {
             "type": ">>=",
+            "named": false
+          },
+          {
+            "type": ">>>=",
             "named": false
           },
           {
@@ -641,11 +657,19 @@
             "named": false
           },
           {
+            "type": "<<<",
+            "named": false
+          },
+          {
             "type": "<=",
             "named": false
           },
           {
             "type": "==",
+            "named": false
+          },
+          {
+            "type": "=~",
             "named": false
           },
           {
@@ -666,6 +690,10 @@
           },
           {
             "type": ">>",
+            "named": false
+          },
+          {
+            "type": ">>>",
             "named": false
           },
           {
@@ -692,6 +720,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "bracket_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1528,7 +1571,7 @@
         "required": true,
         "types": [
           {
-            "type": "parenthesized_expression",
+            "type": "_expression",
             "named": true
           }
         ]
@@ -1878,6 +1921,14 @@
     "named": false
   },
   {
+    "type": "<<<",
+    "named": false
+  },
+  {
+    "type": "<<<=",
+    "named": false
+  },
+  {
     "type": "<<=",
     "named": false
   },
@@ -1891,6 +1942,10 @@
   },
   {
     "type": "==",
+    "named": false
+  },
+  {
+    "type": "=~",
     "named": false
   },
   {
@@ -1915,6 +1970,14 @@
   },
   {
     "type": ">>=",
+    "named": false
+  },
+  {
+    "type": ">>>",
+    "named": false
+  },
+  {
+    "type": ">>>=",
     "named": false
   },
   {
@@ -2028,6 +2091,10 @@
   {
     "type": "if",
     "named": false
+  },
+  {
+    "type": "ipv4",
+    "named": true
   },
   {
     "type": "ms_restrict_modifier",

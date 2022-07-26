@@ -17,4 +17,15 @@ b = a >< 2;
           (binary_expression
             (identifier)
             (number_literal)))))
-
+===
+RegEx Operator
+===
+"Hallo" =~ "^\w+$";
+---
+   (source_file
+     (expression_statement
+       (binary_expression
+         (string_literal
+           (string_fragment))
+         (string_literal
+           (string_fragment)))))

@@ -25,8 +25,6 @@ module.exports = grammar({
   externals: $ => [
     $._unescaped_double_string_fragment,
     $._unescaped_single_string_fragment,
-    $._unescaped_double_string_fragment_no_quoted_end,
-    $._unescaped_single_string_fragment_no_quoted_end,
   ],
 
   extras: $ => [
@@ -51,6 +49,8 @@ module.exports = grammar({
     [$._type_specifier, $._expression, $.macro_type_specifier],
     [$._type_specifier, $.macro_type_specifier],
     [$._declaration_modifiers, $.attributed_non_case_statement],
+    [$.bracket_expression, $.subscript_designator],
+    [$.repeat_statement, $._expression],
   ],
 
   word: $ => $.identifier,
@@ -385,7 +385,7 @@ module.exports = grammar({
       'repeat',
       field('body', $._statement),
       'until',
-      field('condition', $.parenthesized_expression),
+      field('condition', choice($.parenthesized_expression, $._expression)),
       ';'
     ),
     foreach_statement: $ => seq(
@@ -438,11 +438,19 @@ module.exports = grammar({
       $.identifier,
       $.number_literal,
       $.string_literal,
+      $.ipv4,
       $.true,
       $.false,
       $.null,
       $.concatenated_string,
-      $.parenthesized_expression
+      $.parenthesized_expression,
+      $.bracket_expression,
+    ),
+
+    bracket_expression: $ => seq(
+      '[',
+      commaSep($._expression),
+      ']'
     ),
 
     comma_expression: $ => seq(
@@ -474,7 +482,9 @@ module.exports = grammar({
         '>>=',
         '&=',
         '^=',
-        '|='
+        '|=',
+        '<<<=',
+        '>>>=',
       )),
       field('right', $._expression)
     )),
@@ -503,6 +513,7 @@ module.exports = grammar({
         ['&', PREC.BITWISE_AND],
         ['==', PREC.EQUAL],
         ['!=', PREC.EQUAL],
+        ['=~', PREC.EQUAL],
         ['!~', PREC.EQUAL],
         ['>', PREC.RELATIONAL],
         ['>=', PREC.RELATIONAL],
@@ -512,6 +523,8 @@ module.exports = grammar({
         ['>!<', PREC.RELATIONAL],
         ['<<', PREC.SHIFT],
         ['>>', PREC.SHIFT],
+        ['<<<', PREC.SHIFT], // ??
+        ['>>>', PREC.SHIFT],
       ];
 
       return choice(...table.map(([operator, precedence]) => {
@@ -636,18 +649,12 @@ module.exports = grammar({
     string_literal: $ => choice(
       seq(
         '"',
-        prec.right(choice(
-          alias($._unescaped_double_string_fragment, $.string_fragment),
-          alias($._unescaped_double_string_fragment_no_quoted_end, $.string_fragment),
-        )),
+        alias($._unescaped_double_string_fragment, $.string_fragment),
         '"'
       ),
       seq(
         "'",
-        prec.right(choice(
-          alias($._unescaped_single_string_fragment, $.string_fragment),
-          alias($._unescaped_single_string_fragment_no_quoted_end, $.string_fragment),
-        )),
+        alias($._unescaped_single_string_fragment, $.string_fragment),
         "'"
       )
     ),
@@ -673,11 +680,11 @@ module.exports = grammar({
       field('type', $.type_descriptor),
       ')'
     )),
+    ipv4: $ => /\d+\.\d+\.\d+.\d+/,
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
     comment: $ => token(choice(
-      seq('//', /(\\(.|\r?\n)|[^\\\n])*/),
-      seq('#', /(\\(.|\r?\n)|[^\\\n])*/),
+      seq('#', /.*/),
       seq(
         '/*',
         /[^*]*\*+([^/*][^*]*\*+)*/,

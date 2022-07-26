@@ -30,9 +30,11 @@ are totally legal";
           (string_literal
             (string_fragment)))))
 ===
-DoubleEscape
+Multiline strings II
 ===
-a = "hi\"und";
+c = 'yes multiline strings
+"""
+are totally legal';
 ---
     (source_file
       (expression_statement
@@ -40,7 +42,6 @@ a = "hi\"und";
           (identifier)
           (string_literal
             (string_fragment)))))
-
 ===
 SingleEscape
 ===
@@ -59,7 +60,7 @@ query = '\'|\';';
 ===
 \\
 ===
-q = '\\' ;
+q = '\\';
 ---
 
     (source_file
@@ -69,7 +70,21 @@ q = '\\' ;
           (string_literal
             (string_fragment)))))
 ===
-WTF
+Multiline Escape
+===
+q = '
+\'\'\'
+hi
+';
+---
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (string_literal
+        (string_fragment)))))
+===
+DoubleQuoteDoesNotSupportEscaping
 ===
 
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
@@ -81,43 +96,3 @@ key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
           (identifier)
           (string_literal
             (string_fragment)))))
-
-===
-WTF-II
-===
-    item = str_replace(find:"\", replace:"ha", string:item);
----
-    (source_file
-      (expression_statement
-        (assignment_expression
-          (identifier)
-          (call_expression
-            (identifier)
-            (argument_list
-              (named_argument
-                (identifier)
-                (string_literal
-                  (string_fragment)))
-              (named_argument
-                (identifier)
-                (string_literal
-                  (string_fragment)))
-              (named_argument
-                (identifier)
-                (identifier)))))))
-
-===
-WTF-III
-===
-valv = "\Visio\" + Visioentry[v];
----
-    (source_file
-      (expression_statement
-        (assignment_expression
-          (identifier)
-          (binary_expression
-            (string_literal
-              (string_fragment))
-            (subscript_expression
-              (identifier)
-              (identifier))))))

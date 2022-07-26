@@ -1,0 +1,27 @@
+===
+Array assignment
+===
+
+msid_codes = ["AO", "SID_BUILTIN_ACCOUNT_OPERATORS"];
+---
+
+(source_file
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (bracket_expression
+        (string_literal
+          (string_fragment))
+        (string_literal
+          (string_fragment))))))
+
+===
+IPv4
+===
+me = 127.0.0.1;
+---
+    (source_file
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (ipv4))))
