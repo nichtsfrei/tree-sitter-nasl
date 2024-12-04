@@ -1,17 +1,53 @@
 {
   "name": "tree-sitter-nasl",
-  "version": "0.0.1",
-  "description": "treesitter for nasl",
-  "main": "bindings/node",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.1.0",
+  "description": "NASL - Network Attack Scripting Language",
+  "repository": "https://github.com/nichtsfrei/tree-sitter-nasl",
+  "license": "MIT",
+  "author": {
+    "name": "Philipp Eder",
+    "email": "philipp.eder@posteo.net",
+    "url": "https://github.com/nichtsfrei"
   },
-  "author": "",
-  "license": "GPL-3.0-or-later",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "keywords": [
+    "incremental",
+    "parsing",
+    "tree-sitter",
+    "nasl"
+  ],
+  "files": [
+    "grammar.js",
+    "tree-sitter.json",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**",
+    "*.wasm"
+  ],
   "dependencies": {
-    "nan": "^2.16.0"
+    "nan": "^2.22.0",
+    "node-addon-api": "^8.2.1",
+    "node-gyp-build": "^4.8.2"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.20.6"
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.24.4"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.1"
+  },
+  "peerDependenciesMeta": {
+    "tree-sitter": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "install": "node-gyp-build",
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
   }
 }
